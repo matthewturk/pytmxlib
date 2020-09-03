@@ -589,6 +589,8 @@ class IndividualTileTileset(Tileset):
             Space between adjacent tiles, in pixels.
     """
     type = 'individual'
+    source = None
+    image = None
 
     def __init__(self, name, tile_size):
         super(IndividualTileTileset, self).__init__(name, tile_size)
@@ -602,6 +604,7 @@ class IndividualTileTileset(Tileset):
 
     def append_image(self, image):
         self.images.append(image)
+        self.tile_attributes[len(self.images) - 1]['image'] = image
 
     def tile_image(self, number):
         return self.images[number]

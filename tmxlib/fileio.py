@@ -379,6 +379,11 @@ class TMXSerializer(object):
                 if probability != None:
                     tile_elem.attrib['probability'] = str(probability)
                     include = True
+                tile_image = attrs.get('image')
+                if tile_image != None:
+                    image = self.image_to_element(tile_image, base_path)
+                    tile_elem.append(image)
+                    include = True
                 if include:
                     element.append(tile_elem)
             self.append_properties(element, tileset.properties)
